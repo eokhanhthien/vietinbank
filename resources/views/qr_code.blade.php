@@ -35,8 +35,9 @@
       {{-- import fontawesome --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
       <link rel="preload" as="script" fetchpriority="low" href="./Viet QR Generator_files/webpack-28287d746a5e5871.js">
-     
-      <link rel="preload" href="./Viet QR Generator_files/js" as="script">
+     {{-- import bootstrap 5--}}
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="preload" href="./Viet QR Generator_files/js" as="script">
       <title>Viet QR Generator</title>
       <meta name="description" content="Công cụ tạo mã QR, VietQR miễn phí, có khả năng tùy chỉnh màu sắc, logo">
       <meta name="keywords" content="Trình tạo mã qr có logo,trình tạo mã qr,tạo mã qr,trình tạo mã qr,trình tạo qr,trình tạo mã qr,mã qr,mã qr có logo,mã qr miễn phí,trình tạo mã qr miễn phí,mã qr tùy chỉnh,mã qr thanh toán,thanh toán vietqr,tạo mã vietqr,tùy chỉnh mã vietqr,standee để bàn,kệ mica,bảng mica để bàn,menu mica,menu để bàn,mica để bàn,kệ mica để bàn,kệ mica trưng bày,menu mica để bàn,menu mica để bàn a5">
@@ -63,37 +64,22 @@
    </head>
    <body class="__className_e4b652" cz-shortcut-listen="true">
       <div class="flex flex-col min-h-screen">
-         <header class="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
-            <div class="container flex h-16 items-center justify-between">
-               <button class="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-10 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden" type="button" id="radix-:R1bnla:" aria-haspopup="menu" aria-expanded="false" data-state="closed">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-square">
-                     <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                     <path d="M7 8h10"></path>
-                     <path d="M7 12h10"></path>
-                     <path d="M7 16h10"></path>
-                  </svg>
-               </button>
-               <div class="flex items-center">
-                  <div class="mr-4 w-20">
-                     <div style="position:relative;width:100%;padding-bottom:29.75609756097561%" data-radix-aspect-ratio-wrapper="">
-                        <div style="position:absolute;top:0;right:0;bottom:0;left:0"><a href="/"><img alt="QR Logo" loading="lazy" decoding="async" data-nimg="fill" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="https://tamvietgroupvn.com/wp-content/uploads/2021/07/vietinbank-logo.png"></a></div>
-                     </div>
-                  </div>
-                 <button class="items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 md:inline-flex hidden"> <nav class="hidden items-center space-x-6 text-sm font-medium md:flex"><a class="transition-colors hover:text-foreground/80 text-foreground" href="/">Trang chủ</a></nav></button>
-
-                 {{-- <button class="items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 md:inline-flex hidden"> <nav class="hidden items-center space-x-6 text-sm font-medium md:flex"><a class="transition-colors hover:text-foreground/80 text-foreground" href="/">Import excel</a></nav></button> --}}
-
-               </div>
-               <div class="inline-flex space-x-2">
-                  <button class="items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 md:inline-flex hidden" type="button" id="radix-:R3bnla:" aria-haspopup="menu" aria-expanded="false" data-state="closed">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="2" x2="22" y1="12" y2="12"></line>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                     </svg>
-                     <span>VietinBank chi nhánh Cà Mau</span>
+         <header style="background-color: #ffffffe0;" class="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b  backdrop-light">
+            <div class="container">
+               <nav class="navbar navbar-expand-lg">
+                  <a class="navbar-brand" href="#"><img style="width: 100px" src="https://tygia.com.vn/assets/images/ngan-hang/logo/vietinbank.png" alt=""></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                     <i class="fas fa-bars"></i>
                   </button>
-               </div>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a style="color:#006CA3; font-size: 14px"class="nav-item nav-link active" href="/"><i class="fas fa-home"></i> Trang chủ <span class="sr-only"></span></a>
+                      {{-- <a class="nav-item nav-link" href="#">Features</a>
+                      <a class="nav-item nav-link" href="#">Pricing</a>
+                      <a class="nav-item nav-link disabled" href="#">Disabled</a> --}}
+                    </div>
+                  </div>
+                </nav>
             </div>
          </header>
          <main class="flex-1 bg-gray-100 py-2 md:py-4">
@@ -125,7 +111,7 @@
                         <button class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8" style="    background: #0ce55e; color: white" type="submit"><i class="fas fa-plus" style="margin-right: 10px;"></i> Tạo QR</button>
 
                         <a href="/qr-code"">
-                            <button class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8" style="    background: #f5c312; color: white" type="button"><i class="fas fa-sync" style="margin-right: 10px;"></i> Refesh</button>
+                            <button class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8" style="    background: #f5c312; color: white" type="button"><i class="fas fa-sync" style="margin-right: 10px;"></i> Refresh</button>
                         </a>
                     </div>
                      </form>
@@ -190,6 +176,10 @@
    </body>
 </html>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     
 <script>
     function downloadImage() {
       var account_number = document.getElementById("current_account_number").value ?? '';

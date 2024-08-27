@@ -179,10 +179,10 @@ h2 span {
 }
 .news .article img {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   transition: 0.2s;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 16px;
 }
 .news .article figcaption {
   font-size: 14px;
@@ -208,7 +208,7 @@ h2 span {
 .news .article:hover img,
 .news .article:focus img,
 .news .article:active img {
-  filter: brightness(0.3);
+  filter: blur(2px) brightness(0.5);
   transform: scale(0.97);
 }
 .news .article:hover figcaption,
