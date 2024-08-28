@@ -290,6 +290,16 @@ a:hover {
             </figure>
     
             <figure class="article col-md-3 col-lg-3 col-12">
+                <img src="https://img.myloview.com/stickers/illustration-of-operating-a-smartphone-making-an-electronic-payment-700-252410846.jpg" />
+                <figcaption>
+                  <h3> <a href="/staff-qr-code">QR code cán bộ</a></h3>
+                    <p>
+                        Qr code dành cho cán bộ Vietinbank, dùng để điểm danh hoặc tham gia trong các hoạt động của chi nhánh.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <figure class="article col-md-3 col-lg-3 col-12">
     
                 <img src="https://img.graphicsurf.com/2019/12/data-analysis-vector-free-illustration1.jpg" />
     

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\QRCodeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,4 +16,6 @@ use App\Http\Controllers\MissionController;
 */
 
 Route::get('/', [MissionController::class, 'index']);
-Route::get('/qr-code', [MissionController::class, 'qrcode']);
+Route::get('/qr-code', [MissionController::class, 'qrcode'])->name('qrcode');
+Route::get('/staff-qr-code', [QRCodeController::class, 'staffQrcode'])->name('staff.qrcode');
+Route::post('/generate-qr', [QRCodeController::class, 'generateQRCode'])->name('qr.generate');
