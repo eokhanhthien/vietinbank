@@ -17,16 +17,16 @@ class QRCodeController extends Controller
     public function staffQrcode(){
         $staff_qr_codes = StaffQRCode::all();
        // Chuyển đổi hình ảnh thành base64 cho mỗi mã QR
-       foreach ($staff_qr_codes as $staff_qr_code) {
-        $path = public_path('images/QR/' . $staff_qr_code->image);
-        // dd(file_exists($path));
-        if (file_exists($path)) {
-            $staff_qr_code->base64_image = 'data:image/png;base64,' . base64_encode(file_get_contents($path));
-        } else {
-            $staff_qr_code->base64_image = null;
-        }
-    }
-    // dd($staff_qr_codes);
+    //    foreach ($staff_qr_codes as $staff_qr_code) {
+    //         $path = public_path('images/QR/' . $staff_qr_code->image);
+    //         // dd(file_exists($path));
+    //         if (file_exists($path)) {
+    //             $staff_qr_code->base64_image = 'data:image/png;base64,' . base64_encode(file_get_contents($path));
+    //         } else {
+    //             $staff_qr_code->base64_image = null;
+    //         }
+    //     }
+    //      dd($staff_qr_codes);
         return view('staff_qr_code',compact('staff_qr_codes'));
     }
 

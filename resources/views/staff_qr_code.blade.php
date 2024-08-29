@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 <div class=" container mt-4 ">
-    <form action="{{ route('qr.generate') }}" method="POST">
+    <form action="{{ route('qr.generate') }}" method="POST" style="display: none">
         @csrf
         <label for="staff_id">Mã cán bộ:</label>
         <input type="text" id="staff_id" name="staff_id" required>
