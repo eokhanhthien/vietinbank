@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Models\StaffQRCode;
+use App\Models\Attendance;
 
 class QRCodeController extends Controller
 {
@@ -108,5 +109,56 @@ class QRCodeController extends Controller
     }
     
     
+    public function rollAttendance(Request $request){
+        if(isset($request['staff_code']) && $request['staff_code'] != ''){
+            $staff_code = $request->staff_code;
+            $user_code = StaffQRCode::where('code', $staff_code)->first();
+            
+            
+
+            $data = ['status' => 'success', 
+                    'data' => [
+                        'user_code' => $user_code
+                        ]
+                ];
+
+            return response()->json($data);
+        }
+        $attendances =  Attendance::orderBy('id', 'desc')->get();
+        $staff_ids = $attendances->pluck('staff_id');
+        $staff_list = StaffQRCode::whereIn('id', $staff_ids)->get();
+        $staff_list = $staff_list->sortBy(function($staffQRCode) use ($staff_ids) {
+            return $staff_ids->search($staffQRCode->id);
+        })->values();
+        return view('roll_attendance', compact('staff_list',));
+    }
+
+    public function storeAttendance(Request $request){
+        $staff_id = $request->staff_code;
+        $user_code = StaffQRCode::where('code', $staff_id)->first();
+
+        // KIỂM TRA Attendance ĐÃ CÓ ID ĐÓ CHƯA
+        $user_attendance = Attendance::where('staff_id', $user_code->id)->first();
+
+        if(!$user_attendance){
+            $attendance = Attendance::create([
+                'staff_id' => $user_code->id,
+            ]);
+        }
+            
+            // get all Attendance
+            $attendances =  Attendance::orderBy('id', 'desc')->get();
+            $staff_ids = $attendances->pluck('staff_id');
+
+            // Sử dụng mảng staff_id trong StaffQRCode::whereIn
+            $staffQRCodes = StaffQRCode::whereIn('id', $staff_ids)->get();
+
+            $staffQRCodes = $staffQRCodes->sortBy(function($staffQRCode) use ($staff_ids) {
+                return $staff_ids->search($staffQRCode->id);
+            })->values();
+
+            $data = ['status' => 'success', 'datatable' => $staffQRCodes];
+            return response()->json($data);
+    }
     
 }

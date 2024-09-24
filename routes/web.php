@@ -19,3 +19,6 @@ Route::get('/', [MissionController::class, 'index']);
 Route::get('/qr-code', [MissionController::class, 'qrcode'])->name('qrcode');
 Route::get('/staff-qr-code', [QRCodeController::class, 'staffQrcode'])->name('staff.qrcode');
 Route::post('/generate-qr', [QRCodeController::class, 'generateQRCode'])->name('qr.generate');
+Route::get('/roll-attendance', [QRCodeController::class, 'rollAttendance'])->name('qr.roll.attendance');
+Route::post('/roll-attendance', [QRCodeController::class, 'storeAttendance'])->name('store.attendance');
+

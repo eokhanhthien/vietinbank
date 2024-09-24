@@ -13,7 +13,7 @@
      {{-- import bootstrap 5--}}
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
      <link rel="preload" href="./Viet QR Generator_files/js" as="script">
-      <title>Viet QR Generator</title>
+      <title>VietinBank Cà Mau</title>
       <meta name="description" content="Công cụ tạo mã QR, VietQR miễn phí, có khả năng tùy chỉnh màu sắc, logo">
       <meta name="keywords" content="Trình tạo mã qr có logo,trình tạo mã qr,tạo mã qr,trình tạo mã qr,trình tạo qr,trình tạo mã qr,mã qr,mã qr có logo,mã qr miễn phí,trình tạo mã qr miễn phí,mã qr tùy chỉnh,mã qr thanh toán,thanh toán vietqr,tạo mã vietqr,tùy chỉnh mã vietqr,standee để bàn,kệ mica,bảng mica để bàn,menu mica,menu để bàn,mica để bàn,kệ mica để bàn,kệ mica trưng bày,menu mica để bàn,menu mica để bàn a5">
       <meta name="robots" content="index, follow">
