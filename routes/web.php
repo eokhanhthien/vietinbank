@@ -22,3 +22,5 @@ Route::post('/generate-qr', [QRCodeController::class, 'generateQRCode'])->name('
 Route::get('/roll-attendance', [QRCodeController::class, 'rollAttendance'])->name('qr.roll.attendance');
 Route::post('/roll-attendance', [QRCodeController::class, 'storeAttendance'])->name('store.attendance');
 
+Route::get('/delete-attendance', [QRCodeController::class, 'destroyAttendance'])->name('destroy.attendance');
+

@@ -10,11 +10,30 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
         #output {
             margin-top: 20px;
             font-size: 1.2em;
+        }
+        button.dt-button {
+            padding: 3px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        td {
+            font-size: 14px;
+        }
+        a.paginate_button {
+            padding: 8px !important;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+        .dataTables_wrapper .dataTables_filter input {
+            border-radius: 5px;
+            width: 150px;
+            outline: none;
         }
     </style>
 </head>
@@ -23,7 +42,7 @@
         <main class="flex-1 bg-gray-100 py-2 md:py-4">
            <div class="flex flex-col items-center">
               <div class="relative container flex flex-wrap flex-1 items-start gap-6">
-                 <div class="bg-white flex-1 p-8 rounded-md space-y-4 w-full min-w-full md:min-w-[500px]">
+                 <div class="bg-white flex-1 p-8 rounded-md space-y-4 w-full min-w-full" style="min-width: 700px">
 
                     <form action="/roll-attendance" method="GET" style="display: none">
                         @csrf
@@ -49,8 +68,33 @@
                             @endForEach
                         </tbody>
                       </table>
-                
-                 </div>
+                     
+                    <button class="btn btn-danger" style="font-size: 12px;" data-toggle="modal" data-target="#confirmDeleteModal">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                   
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn chắc chắn muốn xóa toàn bộ dữ liệu điểm danh?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-danger" id="confirmDelete"><a href="/delete-attendance" style="color: white !important;text-decoration: none !important;">Xóa</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                  <div class="bg-white rounded-md md:sticky md:top-[80px] flex-1 text-center space-y-4">
                    <div class="flex-1 text-center space-y-2">
@@ -105,47 +149,27 @@
                             $('#user_code').text(response.data.user_code.code);
 
                             if(response.status == 'success') {
-                                
-                                $.ajax({
-                                    url: '/roll-attendance',
-                                    type: 'POST',
-                                    data: {
-                                        staff_code: staff_code
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
+                                 
+                                $('#data-table tbody').empty();
+                                    // Lấy đối tượng DataTable
+                                    var table = $('#data-table').DataTable();
 
-                                    success: function(response) {
-                                        $('#data-table tbody').empty();
-                                        console.log(response);
-                                        if(response.status == 'success') {
-                                           // Lấy đối tượng DataTable
-                                            var table = $('#data-table').DataTable();
+                                    // Xóa tất cả hàng hiện tại
+                                    table.clear();
 
-                                            // Xóa tất cả hàng hiện tại
-                                            table.clear();
+                                    // Thêm các hàng mới
+                                    response.datatable.forEach(function(item, index) {
+                                        var newIndex = response.datatable.length - index;
+                                        table.row.add([
+                                            newIndex, // số thứ tự
+                                            item.code, // mã cán bộ
+                                            item.name  // tên cán bộ
+                                        ]);
+                                    });
 
-                                            // Thêm các hàng mới
-                                            response.datatable.forEach(function(item, index) {
-                                                var newIndex = response.datatable.length - index;
-                                                table.row.add([
-                                                    newIndex, // số thứ tự
-                                                    item.code, // mã cán bộ
-                                                    item.name  // tên cán bộ
-                                                ]);
-                                            });
-
-                                            // Cập nhật DataTable
-                                            table.draw();
-                                        }
-                                    },
-                                    error: function(error) {
-                                        console.log(error);
-                                    }
-                                });
-
-
+                                    // Cập nhật DataTable
+                                    table.draw();
+ 
                             }else{
                                 
                             }

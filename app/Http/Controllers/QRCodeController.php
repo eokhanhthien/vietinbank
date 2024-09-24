@@ -113,15 +113,36 @@ class QRCodeController extends Controller
         if(isset($request['staff_code']) && $request['staff_code'] != ''){
             $staff_code = $request->staff_code;
             $user_code = StaffQRCode::where('code', $staff_code)->first();
+            // KIỂM TRA Attendance ĐÃ CÓ ID ĐÓ CHƯA
+        $user_attendance = Attendance::where('staff_id', $user_code->id)->first();
+
+        if(!$user_attendance){
+            $attendance = Attendance::create([
+                'staff_id' => $user_code->id,
+            ]);
+        }
             
+            // get all Attendance
+            $attendances =  Attendance::orderBy('id', 'desc')->get();
+            $staff_ids = $attendances->pluck('staff_id');
+
+            // Sử dụng mảng staff_id trong StaffQRCode::whereIn
+            $staffQRCodes = StaffQRCode::whereIn('id', $staff_ids)->get();
+
+            $staffQRCodes = $staffQRCodes->sortBy(function($staffQRCode) use ($staff_ids) {
+                return $staff_ids->search($staffQRCode->id);
+            })->values();
+
             
 
             $data = ['status' => 'success', 
                     'data' => [
                         'user_code' => $user_code
-                        ]
+                    ],
+                    'datatable' => $staffQRCodes
                 ];
 
+                
             return response()->json($data);
         }
         $attendances =  Attendance::orderBy('id', 'desc')->get();
@@ -161,4 +182,9 @@ class QRCodeController extends Controller
             return response()->json($data);
     }
     
+    public function destroyAttendance(){
+        Attendance::truncate(); // Dùng truncate để xóa tất cả bản ghi
+        // Quay lại trang trước đó
+        return back()->with('success', 'Đã xóa tất cả dữ liệu thành công!');
+    }
 }
