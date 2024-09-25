@@ -111,7 +111,7 @@
 
                       
                         <div class="flex-1 text-center space-y-2">
-                        <button class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8" style="    background: #0ce55e; color: white" type="submit"><i class="fas fa-plus" style="margin-right: 10px;"></i> Tạo QR</button>
+                        <button class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8" style="    background: #0ce55e; color: white" type="submit"><i class="fas fa-qrcode" style="margin-right: 10px;"></i> Tạo QR</button>
 
                         <a href="/qr-code">
                             <button class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8" style="    background: #f5c312; color: white" type="button"><i class="fas fa-sync" style="margin-right: 10px;"></i> Refresh</button>

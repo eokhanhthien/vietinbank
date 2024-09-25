@@ -170,12 +170,28 @@
                                     // Cập nhật DataTable
                                     table.draw();
  
+                            Toastify({
+                                text: "Thành công!",
+                                duration: 2000, // Thời gian hiển thị (ms)
+                                gravity: "top", // Vị trí: top hoặc bottom
+                                position: 'right', // Vị trí: left, center, right
+                                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                                stopOnFocus: false // Dừng khi di chuột vào
+                            }).showToast();
                             }else{
                                 
                             }
                         },
                         error: function(error) {
-                            console.log(error);
+                            // console.log("Lỗi");
+                            Toastify({
+                                text: "Mã QR không hợp lệ!",
+                                duration: 2000, // Thời gian hiển thị (ms)
+                                gravity: "top", // Vị trí: top hoặc bottom
+                                position: 'right', // Vị trí: left, center, right
+                                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)", // Màu nền
+                                stopOnFocus: false // Dừng khi di chuột vào
+                            }).showToast();
                         }
                     });
                 }

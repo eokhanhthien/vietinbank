@@ -12,6 +12,7 @@
         <button type="submit">Tạo Mã QR</button>
     </form>
     
+    <button class="btn btn-primary mb-2"><a href="/roll-attendance" style="color: white !important;text-decoration: none !important;"> <i class="fas fa-clipboard-list"></i> Điểm danh </a></button>
       <table class="table" id="data-table">
         <thead class="thead-light">
           <tr>

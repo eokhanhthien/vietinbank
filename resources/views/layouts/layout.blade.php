@@ -50,6 +50,10 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPDF/1.5.3/jspdf.debug.js" defer></script>
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
      <script src="https://cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.js"></script>
+     
    </head>
    <body class="__className_e4b652" cz-shortcut-listen="true">
       <div class="flex flex-col min-h-screen">
