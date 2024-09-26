@@ -35,6 +35,9 @@
             width: 150px;
             outline: none;
         }
+        img#avatar {
+            border-radius: 14px;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +105,7 @@
                          <div style="position:relative;width:100%;padding-bottom:100%" data-radix-aspect-ratio-wrapper="">
                             <div style="position:absolute;top:0;right:0;bottom:0;left:0; padding:20px">
                                {{-- <img id="qr-image" src="{{$qrCode??''}}" alt="QR Code" sizes="" srcset=""> --}}
-                               <img id="avatar" style="width: 200px; margin: auto;" src="https://th.bing.com/th/id/R.c3631c652abe1185b1874da24af0b7c7?rik=XBP%2fc%2fsPy7r3HQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-circled-user-icon-2240.png&ehk=z4ciEVsNoCZtWiFvQQ0k4C3KTQ6wt%2biSysxPKZHGrCc%3d&risl=&pid=ImgRaw&r=0" alt="QR Code" sizes="" srcset="">
+                               <img id="avatar" style="width: 220px; margin: auto;height: 240px;object-fit: cover;" src="https://healthandpharma.net/public/images/default-avatar.webp" alt="QR Code" sizes="" srcset="">
                                 <h5 id="user_name" style="margin-top:20px">{{!empty($user_code) ? $user_code->name : ''}}</h5>
                                 <p id="user_code">{{!empty($user_code) ? $user_code->code : ''}}</p>
                             </div>
@@ -147,6 +150,27 @@
                             console.log(response);
                             $('#user_name').text(response.data.user_code.name);
                             $('#user_code').text(response.data.user_code.code);
+                            
+                            var userCode = response.data && response.data.user_code ? response.data.user_code.code : null;
+                            
+                            
+                            var link = userCode ? window.location.origin + '/images/avatar/' + userCode + '.jpg' : null;
+                            var defaultImage = 'https://healthandpharma.net/public/images/default-avatar.webp';
+
+                            if (link) {
+                                $.ajax({
+                                    url: link,
+                                    type: 'HEAD', // Chỉ kiểm tra tiêu đề
+                                    success: function() {
+                                        $('#avatar').attr('src', link); // Ảnh tồn tại
+                                    },
+                                    error: function() {
+                                        $('#avatar').attr('src', defaultImage); // Ảnh không tồn tại
+                                    }
+                                });
+                            } else {
+                                $('#avatar').attr('src', defaultImage); // Không có userCode
+                            }
 
                             if(response.status == 'success') {
                                  
